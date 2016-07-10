@@ -1,4 +1,11 @@
 class ArticlesController < ApplicationController
+
+  before_action :get_article_from_params, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @articles = Article.all
+  end
+
   def new
     @article = Article.new
   end
@@ -8,7 +15,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     if @article.save
       flash[:notice] = "Article was successfully created"
-      redirect_to article_path(@article)
+      redirect_to articles_path
     else
       flash[:notice] = ""
       render 'new'
@@ -16,7 +23,28 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @article.update(article_params)
+      flash[:notice] = 'Article was successfully updated!'
+      redirect_to articles_path
+    else
+      flash[:notice] = 'Error updating article. See below for errors'
+      redirect_to edit_article_path
+    end
+  end
+
+  def destroy
+    if @article.destroy
+      flash[:notice] = 'Article was successfully deleted!'
+    else
+      flash[:notice] = 'Article could not be deleted.'
+    end
+    redirect_to articles_path
   end
 
   private
@@ -25,5 +53,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :description)
   end
 
-
+  def get_article_from_params
+    @article = Article.find(params[:id])
+  end
 end

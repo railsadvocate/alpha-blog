@@ -1,0 +1,10 @@
+<h2 class="page-header">Articles<small> <%= link_to 'create article', new_article_path %></small></h2>
+
+
+<% @articles.each do |a| %>
+    Title: <%= a.title %><br />
+    Description: <%= a.description %><br />
+    <%= link_to 'Show', article_path(a) %>
+    <%= link_to 'Edit', edit_article_path(a) %>
+    <%= link_to 'Delete', article_path(a), method: :delete %><br /><br />
+<% end %>

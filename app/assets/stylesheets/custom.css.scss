@@ -1,2 +1,35 @@
+$navbar-default-bg: #1D2951;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  background-image: url('main-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#logo {
+  color: white;
+  letter-spacing: -1px;
+  font-size: 1.5em;
+}
+
+.navbar { border-radius: 0;}
+.nav.navbar-nav > li > a {
+  color: white;
+  &:hover { color: #aaa; }
+  &:active { background-color: $navbar-default-bg; }
+  &:visited { color: #fff}
+}
+
+.home-page-jumbo {
+  padding: 2em;
+  background-color: rgba(230, 230, 230, .6);
+  a { color: #1D2951; }
+}
+.app-text-color { color: #fff; }
+
+.sign-up-btn {
+  font-size: 1.5em;
+}

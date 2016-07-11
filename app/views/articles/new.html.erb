@@ -1,4 +1,5 @@
-<h1>Create an article!</h1>
+<% if @container_div %> <div class="container"> <% end %>
+<!-- <h2 class="page-header app-blue-text-color">Create an article!</h2> -->
 
 <% if @article.errors.any? %>
     <h2>The following errors prevented the article from being created</h2>
@@ -10,3 +11,4 @@
 <% end %>
 
 <%= render 'form' %>
+<% if @container_div %> </div> <% end %>

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   before_action :get_article_from_params, only: [:show, :edit, :update, :destroy]
+  before_action :wrap_with_container
 
   def index
     @articles = Article.all
